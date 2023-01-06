@@ -3,6 +3,9 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
+variables:
+  PATH: C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\wbin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\dotnet\;C:\Users\User\AppData\Local\Programs\Python\Python39;C:\Users\User\AppData\Local\Programs\Python\Python39\Scripts;C:\Program Files\PowerShell\7\;C:\Users\User\AppData\Local\Microsoft\WindowsApps;C:\Users\User\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\User\AppData\Roaming\npm;C:\Users\User\.dotnet\tools
+
 trigger:
 - master
 
@@ -10,9 +13,6 @@ pool:
   name: Default
 
 steps:
-- powershell: |
-    setx PATH "$ENV:PATH;C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\wbin;" -m
-  displayName: "WriteHost"
 
 - script: |
     echo %PATH%
