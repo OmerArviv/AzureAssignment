@@ -11,17 +11,6 @@ pool:
 
 steps:
 
-
-- script: |
-    echo hello 
-    echo world
-  displayName: 'Run a multi-line script'
-
 - powershell: |
-    .\test.ps1
-    write-output test from yaml
+    .\script.ps1
   displayName: 'Run a powershell script'
-
-- script: |
-    write-output test from outside
-  displayName: 'Run script '
