@@ -90,5 +90,7 @@ az group deployment create -g rgroup1 --template-file .\storage2.json
 #   -ResourceGroupName "rgroup1" `
 #   -TemplateFile $templateFile
 
+az group deployment create -g rgroup1 --template-file .\linuxt.json
+
 
 #ssh Omer@simplelinuxvm-zxelw3vh7ich6.centralus.cloudapp.azure.com
