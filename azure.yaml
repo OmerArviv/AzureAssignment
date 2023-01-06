@@ -12,5 +12,5 @@ pool:
 steps:
 
 - powershell: |
-    .\test.ps1
+    .\script.ps1
   displayName: 'Run a powershell script'
