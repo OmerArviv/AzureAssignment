@@ -11,7 +11,7 @@ pool:
 
 steps:
 - script: |
-    az account list --all
+    echo %PATH%
   displayName: "Out script"
 - powershell: |
     .\script.ps1
