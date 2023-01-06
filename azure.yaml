@@ -11,7 +11,7 @@ pool:
 
 steps:
 - powershell: |
-    $ENV:PATH = 'C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\wbin;' + $ENV:PATH
+    setx PATH "$ENV:PATH;C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\wbin;" -m
   displayName: "WriteHost"
 
 - script: |
