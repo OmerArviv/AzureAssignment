@@ -1,16 +1,20 @@
 #setup environment
-Install-Module -Name Az -Scope CurrentUser -Repository PSGallery -Force
+#Install-Module -Name Az -Scope CurrentUser -Repository PSGallery -Force
 
-$context = Get-AzSubscription -SubscriptionId a8108c2b-496c-424d-8347-ecc8afb6384c
-Set-AzContext $context
+
+# $context = Get-AzSubscription -SubscriptionId a8108c2b-496c-424d-8347-ecc8afb6384c
+# Set-AzContext $context
 
 #create resource group
 
-New-AzResourceGroup `
-  -Name "rgroup1" `
-  -Location "centralus"
+az group create -l centralus -n rgroup1
+az config set defaults.location=centralus defaults.group=rgroup1
 
-Set-AzDefault -ResourceGroupName rgroup1
+# New-AzResourceGroup `
+#   -Name "rgroup1" `
+#   -Location "centralus"
+
+# Set-AzDefault -ResourceGroupName rgroup1
 
 #creatine blanktemplatedeployment 
 
@@ -23,19 +27,22 @@ Set-AzDefault -ResourceGroupName rgroup1
 
 #creating 2 storage accounts   
 
-$templateFile = "storage1.json"
-$today = Get-Date -Format "MM-dd-yyyy"
-$deploymentName = "addstorage-" + "$today"
-New-AzResourceGroupDeployment `
-  -Name $deploymentName `
-  -TemplateFile $templateFile
+az group deployment create -g rgroup1 --template-file .\storage1.json
+az group deployment create -g rgroup1 --template-file .\storage2.json
 
-$templateFile = "storage2.json"
-$today = Get-Date -Format "MM-dd-yyyy"
-$deploymentName = "addstorage2-" + "$today"
-New-AzResourceGroupDeployment `
-  -Name $deploymentName `
-  -TemplateFile $templateFile
+# $templateFile = "storage1.json"
+# $today = Get-Date -Format "MM-dd-yyyy"
+# $deploymentName = "addstorage-" + "$today"
+# New-AzResourceGroupDeployment `
+#   -Name $deploymentName `
+#   -TemplateFile $templateFile
+
+# $templateFile = "storage2.json"
+# $today = Get-Date -Format "MM-dd-yyyy"
+# $deploymentName = "addstorage2-" + "$today"
+# New-AzResourceGroupDeployment `
+#   -Name $deploymentName `
+#   -TemplateFile $templateFile
 
 
 
@@ -76,13 +83,13 @@ New-AzResourceGroupDeployment `
 
 # #creating linux vm
 
-$templateFile = "linuxt.json"
-$today = Get-Date -Format "MM-dd-yyyy"
-$deploymentName = "createlvm-" + "$today"
-New-AzResourceGroupDeployment `
-  -Name $deploymentName `
-  -ResourceGroupName "rgroup1" `
-  -TemplateFile $templateFile
+# $templateFile = "linuxt.json"
+# $today = Get-Date -Format "MM-dd-yyyy"
+# $deploymentName = "createlvm-" + "$today"
+# New-AzResourceGroupDeployment `
+#   -Name $deploymentName `
+#   -ResourceGroupName "rgroup1" `
+#   -TemplateFile $templateFile
 
 
 #ssh Omer@simplelinuxvm-zxelw3vh7ich6.centralus.cloudapp.azure.com
