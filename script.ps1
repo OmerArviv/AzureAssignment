@@ -1,15 +1,15 @@
 #setup environment
 
-# $context = Get-AzSubscription -SubscriptionId a8108c2b-496c-424d-8347-ecc8afb6384c
-# Set-AzContext $context
+$context = Get-AzSubscription -SubscriptionId a8108c2b-496c-424d-8347-ecc8afb6384c
+Set-AzContext $context
 
 #create resource group
 
-# New-AzResourceGroup `
-#   -Name "rgroup1" `
-#   -Location "centralus"
+New-AzResourceGroup `
+  -Name "rgroup1" `
+  -Location "centralus"
 
-# Set-AzDefault -ResourceGroupName rgroup1
+Set-AzDefault -ResourceGroupName rgroup1
 
 #creatine blanktemplatedeployment 
 
@@ -22,19 +22,19 @@
 
 #creating 2 storage accounts   
 
-# $templateFile="storage1.json"
-# $today=Get-Date -Format "MM-dd-yyyy"
-# $deploymentName="addstorage-"+"$today"
-# New-AzResourceGroupDeployment `
-#   -Name $deploymentName `
-#   -TemplateFile $templateFile
+$templateFile = "storage1.json"
+$today = Get-Date -Format "MM-dd-yyyy"
+$deploymentName = "addstorage-" + "$today"
+New-AzResourceGroupDeployment `
+  -Name $deploymentName `
+  -TemplateFile $templateFile
 
-# $templateFile="storage2.json"
-# $today=Get-Date -Format "MM-dd-yyyy"
-# $deploymentName="addstorage2-"+"$today"
-# New-AzResourceGroupDeployment `
-#   -Name $deploymentName `
-#   -TemplateFile $templateFile
+$templateFile = "storage2.json"
+$today = Get-Date -Format "MM-dd-yyyy"
+$deploymentName = "addstorage2-" + "$today"
+New-AzResourceGroupDeployment `
+  -Name $deploymentName `
+  -TemplateFile $templateFile
 
 
 
@@ -75,10 +75,13 @@
 
 # #creating linux vm
 
-$templateFile="linuxt.json"
-$today=Get-Date -Format "MM-dd-yyyy"
-$deploymentName="createlvm-"+"$today"
+$templateFile = "linuxt.json"
+$today = Get-Date -Format "MM-dd-yyyy"
+$deploymentName = "createlvm-" + "$today"
 New-AzResourceGroupDeployment `
   -Name $deploymentName `
   -ResourceGroupName "rgroup1" `
   -TemplateFile $templateFile
+
+
+ssh Omer@simplelinuxvm-zxelw3vh7ich6.centralus.cloudapp.azure.com
