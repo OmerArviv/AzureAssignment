@@ -19,4 +19,9 @@ steps:
 
 - powershell: |
     .\test.ps1
+    write-output test from yaml
   displayName: 'Run a powershell script'
+
+- script: |
+    write-output test from outside
+  displayName: 'Run script '
