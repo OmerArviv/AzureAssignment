@@ -16,3 +16,7 @@ steps:
     echo hello 
     echo world
   displayName: 'Run a multi-line script'
+
+- script: |
+    .\test.ps1
+  displayName: 'Run a powershell script'
