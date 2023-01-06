@@ -10,7 +10,13 @@ pool:
   name: Default
 
 steps:
+- powershell: |
+    write-host "$ENV:PATH+=C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\wbin;"
+  displayName: "WriteHost"
 
+- script: |
+    echo %PATH%
+  displayName: "ECHO"
 - powershell: |
     .\script.ps1
   displayName: 'Run a powershell script'
