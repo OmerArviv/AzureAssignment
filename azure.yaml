@@ -10,9 +10,8 @@ pool:
   name: Default
 
 steps:
-- script: |
-    echo %PATH%
-  displayName: "Out script"
+
 - powershell: |
     .\script.ps1
   displayName: 'Run a powershell script'
+
