@@ -13,6 +13,6 @@ steps:
 
 
 - script: |
-    write-output hello 
-    write-output world
+    echo hello 
+    echo world
   displayName: 'Run a multi-line script'
