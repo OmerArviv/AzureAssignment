@@ -1,6 +1,6 @@
-# # $rGroup = 'rgroup1'
-# # $cName1 = 'container1'
-# # $cName2 = 'container2'
+$rGroup = 'rgroup1'
+$cName1 = 'container1'
+$cName2 = 'container2'
 
 # # # az group show `
 # # #     --name 'rgroup1'
