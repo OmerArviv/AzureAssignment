@@ -1,9 +1,7 @@
-$rGroup = 'rgroup1'
+
+
 $cName1 = 'container1'
 $cName2 = 'container2'
-
-# # # az group show `
-# # #     --name 'rgroup1'
 
 # saving the account keys in variables
 
@@ -30,17 +28,18 @@ az storage container create `
     --account-key $acKey2
 
 
-
+ 
+# $dirPath = "C:\Users\User\OneDrive\Desktop\Azure\blobs"
 # dir ENV:
 $dirpath = $ENV:AGENT_BUILDDIRECTORY + "\blobs"
 
-#  creating and uploading 100 files to container1 in omerstorage1
+# creating a directory for the blob creating
 
 New-Item -Path $ENV:AGENT_BUILDDIRECTORY -Name "blobs" -ItemType "directory"
 
-# $dirPath = "C:\Users\User\OneDrive\Desktop\Azure\blobs"
+#  creating and uploading 100 files to container1 in omerstorage1
 
-for ($num = 1 ; $num -le 10 ; $num++) {
+for ($num = 1 ; $num -le 100 ; $num++) {
     $fileName = "testfile" + $num + ".txt"
     $fileText = "This is a text string number " + $num
 
@@ -53,7 +52,7 @@ for ($num = 1 ; $num -le 10 ; $num++) {
         -n $fileName `
         --account-name omerstorage1 `
         --account-key $acKey1 `
-        --overwrite       # can be removed if don't want to overwrite existing files
+        --overwrite       # can be removed if we don't want to overwrite existing files
 
     
     
@@ -71,4 +70,3 @@ az storage blob copy start-batch `
     --destination-container $cName2 `
     --source-uri https://omerstorage1.blob.core.windows.net/container1/ `
     --pattern testfile*.txt
-
