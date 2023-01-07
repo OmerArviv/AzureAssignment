@@ -1,4 +1,10 @@
+
+
+# az login
+# az account set --name MSEC_Candidates_Homeworks_new
+
 #creating resource group
+
 
 az group create -l centralus -n rgroup1
 az config set defaults.location=centralus defaults.group=rgroup1
