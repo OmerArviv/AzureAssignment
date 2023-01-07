@@ -5,16 +5,10 @@ $cName2 = 'container2'
 # # # az group show `
 # # #     --name 'rgroup1'
 
-# az storage account keys list --account-name omerstorage1
+# saving the account keys in variables
+
 $acInfo1 = @(az storage account keys list --account-name omerstorage1 | ConvertFrom-Json )
 $acKey1 = $acInfo1.value[0]
-
-
-#az storage account keys list --account-name omerstorage1
-#  Ur1Cp9SEmQnlstxi4WKI5sW9f4MSHR66+2tJKAQtfZyMslZeqsYje+te8oi//yEw/arwVzQn0O1W+ASt1jOlnA==
-# az storage account keys list --account-name omerstorage2
-#  RIeO3WmKsBcRYbKeIXrpyDLNIQeY8r7KQv5D8qfinyOUw98pkaGFdQ4eT9gESFvwes+ia5rjEM8N+AStmt+khw==
-
 
 $acInfo2 = @(az storage account keys list --account-name omerstorage2 | ConvertFrom-Json)
 $acKey2 = $acInfo2.value[0]
@@ -46,7 +40,7 @@ New-Item -Path $ENV:AGENT_BUILDDIRECTORY -Name "blobs" -ItemType "directory"
 
 # $dirPath = "C:\Users\User\OneDrive\Desktop\Azure\blobs"
 
-for ($num = 1 ; $num -le 5 ; $num++) {
+for ($num = 1 ; $num -le 10 ; $num++) {
     $fileName = "testfile" + $num + ".txt"
     $fileText = "This is a text string number " + $num
 
