@@ -31,7 +31,8 @@
 
 
 
-dir ENV:
+# dir ENV:
+write-output $ENV:AGENT_BUILDDIRECTORY
 
 # creating and uploading 100 files to container1 in omerstorage1
 
