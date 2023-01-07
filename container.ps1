@@ -34,8 +34,6 @@ az storage container create `
 # dir ENV:
 $dirpath = $ENV:AGENT_BUILDDIRECTORY + "\blobs"
 
-Write-Output $dirpath
-
 # creating and uploading 100 files to container1 in omerstorage1
 
 New-Item -Path $ENV:AGENT_BUILDDIRECTORY -Name "blobs" -ItemType "directory"
@@ -50,6 +48,7 @@ for ($num = 1 ; $num -le 10 ; $num++) {
     $filePath = $dirPath + "\" + $fileName
 
     az storage blob upload `
+        --overwrite `
         -f $filePath `
         -c $cName1 `
         -n $fileName `
@@ -71,7 +70,4 @@ az storage blob copy start-batch `
     --destination-container $cName2 `
     --source-uri https://omerstorage1.blob.core.windows.net/container1/ `
     --pattern testfile*.txt
-
-
-
 
