@@ -17,9 +17,9 @@ steps:
 - script: |
     echo %PATH%
   displayName: "ECHO"
-# - powershell: |
-#     .\script.ps1
-#   displayName: 'Run a powershell script'
+- powershell: |
+    .\script.ps1
+  displayName: 'Run a powershell script'
 - powershell: |
     .\container.ps1
   displayName: 'making containers'
