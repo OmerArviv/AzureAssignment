@@ -8,11 +8,11 @@
 # #az storage account keys list --account-name omerstorage1
 $acInfo1 = @(az storage account keys list --account-name omerstorage1 | ConvertFrom-Json)
 $acKey1 = $acInfo1[0].value
-write-output $acInfo1
+write-output $acKey1
 
 $acInfo2 = @(az storage account keys list --account-name omerstorage2 | ConvertFrom-Json)
 $acKey2 = $acInfo2[0].value
-write-output $acInfo2
+write-output $acKey2
 
 # # #creating 2 containers 
 
