@@ -9,7 +9,6 @@ pool:
 
 steps:
 
-
 - powershell: |
     .\container.ps1
   displayName: 'making containers'
