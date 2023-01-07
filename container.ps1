@@ -5,15 +5,15 @@
 # # # az group show `
 # # #     --name 'rgroup1'
 
-# #az storage account keys list --account-name omerstorage1
+az storage account keys list --account-name omerstorage1
 $acInfo1 = @(az storage account keys list --account-name omerstorage1 | ConvertFrom-Json)
 $acKey1 = $acInfo1[0].value
-write-output $acInfo1["key1"]
+write-output $acKey1
 
-Write-Output "____________________"
-$acInfo2 = @(az storage account keys list --account-name omerstorage2 | ConvertFrom-Json)
-$acKey2 = $acInfo2[0].value
-write-output $acInfo2[0]
+# Write-Output "____________________"
+# $acInfo2 = @(az storage account keys list --account-name omerstorage2 | ConvertFrom-Json)
+# $acKey2 = $acInfo2[0].value
+# write-output $acInfo2['key2']
 
 # # #creating 2 containers 
 
