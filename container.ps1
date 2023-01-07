@@ -5,8 +5,9 @@
 # # # az group show `
 # # #     --name 'rgroup1'
 
-az storage account keys list --account-name omerstorage1
-$acInfo1 = @(az storage account keys list --account-name omerstorage1 | ConvertFrom-Json)
+#az storage account keys list --account-name omerstorage1
+$acInfo1 = @(az storage account keys list --account-name omerstorage1 | ConvertFrom-Json -AsHashtable)
+Write-Output $acInfo1[0]
 $acKey1 = $acInfo1[0].value
 write-output $acKey1
 
