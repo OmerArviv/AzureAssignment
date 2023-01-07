@@ -7,7 +7,7 @@ $cName2 = 'container2'
 
 # az storage account keys list --account-name omerstorage1
 $acInfo1 = @(az storage account keys list --account-name omerstorage1 | ConvertFrom-Json )
-Write-Output $acInfo1.value
+# Write-Output $acInfo1.value
 $acKey1 = $acInfo1.value[0]
 write-output $acKey1
 
