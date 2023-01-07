@@ -18,6 +18,6 @@ steps:
   displayName: "ECHO"
 - powershell: |
     .\script.ps1
-  displayName: 'Run a powershell script'
+  displayName: 'Run an init script'
 
 

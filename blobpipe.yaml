@@ -11,4 +11,4 @@ steps:
 
 - powershell: |
     .\container.ps1
-  displayName: 'making containers'
+  displayName: 'making containers and blobs'
