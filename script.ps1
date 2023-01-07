@@ -1,3 +1,19 @@
+#creating resource group
+
+az group create -l centralus -n rgroup1
+az config set defaults.location=centralus defaults.group=rgroup1
+
+#creating 2 storage accounts
+
+az group deployment create -g rgroup1 --template-file .\storage1.json
+az group deployment create -g rgroup1 --template-file .\storage2.json
+
+#creating the vm group
+
+az group deployment create -g rgroup1 --template-file .\linuxt.json --parameters @linuxt-parameters.json
+
+
+
 #setup environment
 #Install-Module -Name Az -Scope CurrentUser -Repository PSGallery -Force
 
@@ -5,9 +21,6 @@
 # Set-AzContext $context
 
 #create resource group
-
-az group create -l centralus -n rgroup1
-az config set defaults.location=centralus defaults.group=rgroup1
 
 # New-AzResourceGroup `
 #   -Name "rgroup1" `
@@ -26,9 +39,6 @@ az config set defaults.location=centralus defaults.group=rgroup1
 
 #creating 2 storage accounts   
 
-az group deployment create -g rgroup1 --template-file .\storage1.json
-az group deployment create -g rgroup1 --template-file .\storage2.json
-
 # $templateFile = "storage1.json"
 # $today = Get-Date -Format "MM-dd-yyyy"
 # $deploymentName = "addstorage-" + "$today"
@@ -42,8 +52,6 @@ az group deployment create -g rgroup1 --template-file .\storage2.json
 # New-AzResourceGroupDeployment `
 #   -Name $deploymentName `
 #   -TemplateFile $templateFile
-
-
 
 
 #creating virutalnetwork + subnets
@@ -90,7 +98,6 @@ az group deployment create -g rgroup1 --template-file .\storage2.json
 #   -ResourceGroupName "rgroup1" `
 #   -TemplateFile $templateFile
 
-az group deployment create -g rgroup1 --template-file .\linuxt.json --parameters @linuxt-parameters.json
 
 
 #ssh Omer@simplelinuxvm-zxelw3vh7ich6.centralus.cloudapp.azure.com
