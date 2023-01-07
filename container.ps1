@@ -10,13 +10,15 @@
 # Write-Output $acInfo1[0]
 # $acKey1 = $acInfo1[0].value
 # write-output $acKey1
-az storage account keys list --account-name omerstorage1
+
+
+#az storage account keys list --account-name omerstorage1
 #  Ur1Cp9SEmQnlstxi4WKI5sW9f4MSHR66+2tJKAQtfZyMslZeqsYje+te8oi//yEw/arwVzQn0O1W+ASt1jOlnA==
-az storage account keys list --account-name omerstorage2
+# az storage account keys list --account-name omerstorage2
 #  RIeO3WmKsBcRYbKeIXrpyDLNIQeY8r7KQv5D8qfinyOUw98pkaGFdQ4eT9gESFvwes+ia5rjEM8N+AStmt+khw==
 
-$acKey1 = Ur1Cp9SEmQnlstxi4WKI5sW9f4MSHR66+2tJKAQtfZyMslZeqsYje+te8oi//yEw/arwVzQn0O1W+ASt1jOlnA==
-$acKey2 = RIeO3WmKsBcRYbKeIXrpyDLNIQeY8r7KQv5D8qfinyOUw98pkaGFdQ4eT9gESFvwes+ia5rjEM8N+AStmt+khw==
+$acKey1 = "Ur1Cp9SEmQnlstxi4WKI5sW9f4MSHR66+2tJKAQtfZyMslZeqsYje+te8oi//yEw/arwVzQn0O1W+ASt1jOlnA=="
+$acKey2 = "RIeO3WmKsBcRYbKeIXrpyDLNIQeY8r7KQv5D8qfinyOUw98pkaGFdQ4eT9gESFvwes+ia5rjEM8N+AStmt+khw=="
 
 
 # Write-Output "____________________"
