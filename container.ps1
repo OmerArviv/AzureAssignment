@@ -48,12 +48,13 @@ for ($num = 1 ; $num -le 10 ; $num++) {
     $filePath = $dirPath + "\" + $fileName
 
     az storage blob upload `
-        --overwrite `
         -f $filePath `
         -c $cName1 `
         -n $fileName `
         --account-name omerstorage1 `
-        --account-key $acKey1
+        --account-key $acKey1 `
+        --overwrite       # can be removed if don't want to overwrite existing files
+
     
     
     Remove-Item $filePath
