@@ -6,11 +6,12 @@ $cName2 = 'container2'
 # # #     --name 'rgroup1'
 
 # az storage account keys list --account-name omerstorage1
-$acInfo1 = @(az storage account keys list --account-name omerstorage1 | ConvertFrom-Json -AsHashtable)
+$acInfo1 = @(az storage account keys list --account-name omerstorage1 | ConvertFrom-Json )
 Write-Output $acInfo1.value
 # $acKey1 = $acInfo1.value
 # write-output $acKey1
 
+#-AsHashtable
 
 #az storage account keys list --account-name omerstorage1
 #  Ur1Cp9SEmQnlstxi4WKI5sW9f4MSHR66+2tJKAQtfZyMslZeqsYje+te8oi//yEw/arwVzQn0O1W+ASt1jOlnA==
