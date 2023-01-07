@@ -6,16 +6,13 @@ $cName2 = 'container2'
 #     --name 'rgroup1'
 
 #az storage account keys list --account-name omerstorage1
+$acInfo1 = @(az storage account keys list --account-name omerstorage1 | ConvertFrom-Json)
+$acKey1 = $acInfo1[0].value
+write-output $acKey1
 
-# 2 account keys for omerstorage1:
-#   Ur1Cp9SEmQnlstxi4WKI5sW9f4MSHR66+2tJKAQtfZyMslZeqsYje+te8oi//yEw/arwVzQn0O1W+ASt1jOlnA==
-#   +YRC/QsBsaCN1ko7C0dN/ePdHtKh9s24aUnI333u0fNA/bcpTSVGcj/PVXyMDAbUoNoYa659LWY9+AStKBoM8w==
-
-#az storage account keys list --account-name omerstorage2
-
-# 2 account keys for omerstorage2:
-# RIeO3WmKsBcRYbKeIXrpyDLNIQeY8r7KQv5D8qfinyOUw98pkaGFdQ4eT9gESFvwes+ia5rjEM8N+AStmt+khw==
-# fMETzLC5pFuNPwG9/KFXE9qCYXyRHTLPgkgSHS/jqDPn0EWEoiIHks/hDsbUB6REdGCbDIIN7Aqb+AStpBinYQ==
+$acInfo2 = @(az storage account keys list --account-name omerstorage2 | ConvertFrom-Json)
+$acKey2 = $acInfo2[0].value
+write-output $acKey2
 
 #creating 2 containers 
 
@@ -23,14 +20,14 @@ az storage container create `
     --name $cName1 `
     --account-name omerstorage1 `
     --public-access blob `
-    --account-key Ur1Cp9SEmQnlstxi4WKI5sW9f4MSHR66+2tJKAQtfZyMslZeqsYje+te8oi//yEw/arwVzQn0O1W+ASt1jOlnA==
+    --account-key $acKey1
 
 
 az storage container create `
     --name $cName2 `
     --account-name omerstorage2 `
     --public-access blob `
-    --account-key RIeO3WmKsBcRYbKeIXrpyDLNIQeY8r7KQv5D8qfinyOUw98pkaGFdQ4eT9gESFvwes+ia5rjEM8N+AStmt+khw==
+    --account-key $acKey2
 
 
 
@@ -42,7 +39,7 @@ New-Item -Path "C:\Users\User\OneDrive\Desktop\Azure" -Name "blobs" -ItemType "d
 
 $dirPath = "C:\Users\User\OneDrive\Desktop\Azure\blobs"
 
-for ($num = 1 ; $num -le 100 ; $num++) {
+for ($num = 1 ; $num -le 5 ; $num++) {
     $fileName = "testfile" + $num + ".txt"
     $fileText = "This is a text string number " + $num
 
@@ -54,18 +51,19 @@ for ($num = 1 ; $num -le 100 ; $num++) {
         -c $cName1 `
         -n $fileName `
         --account-name omerstorage1 `
-        --account-key Ur1Cp9SEmQnlstxi4WKI5sW9f4MSHR66+2tJKAQtfZyMslZeqsYje+te8oi//yEw/arwVzQn0O1W+ASt1jOlnA==
+        --account-key $acKey1
     
     
     Remove-Item $filePath
 }
+
 # delete blobs directory
 Remove-Item $dirPath
 
 # copying all the testfiles*.txt from container1 (omerstorage1) to container2 (omerstorage2)
 
 az storage blob copy start-batch `
-    --account-key RIeO3WmKsBcRYbKeIXrpyDLNIQeY8r7KQv5D8qfinyOUw98pkaGFdQ4eT9gESFvwes+ia5rjEM8N+AStmt+khw== `
+    --account-key $acKey2 `
     --account-name omerstorage2 `
     --destination-container $cName2 `
     --source-uri https://omerstorage1.blob.core.windows.net/container1/ `
