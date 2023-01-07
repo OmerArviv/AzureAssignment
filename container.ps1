@@ -31,8 +31,7 @@
 
 
 
-$ENV:Agent.BuildDirectory
-Write-Output $ENV:Agent.BuildDirectory
+dir ENV:
 
 # creating and uploading 100 files to container1 in omerstorage1
 
