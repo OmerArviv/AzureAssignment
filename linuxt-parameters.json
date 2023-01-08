@@ -7,9 +7,6 @@
         },
         "adminPasswordOrKey": {
             "value": "Omer123123"
-        },
-        "dnsLabelPrefix": {
-            "value": "GEN-UNIQUE"
         }
     }
 }
