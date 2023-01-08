@@ -1,5 +1,12 @@
 
+# deploying resource group
 
+az group create -l centralus -n rgroup1
+
+# deploying 2 storage accounts
+
+az group deployment create -g rgroup1 --template-file .\storage1.json
+az group deployment create -g rgroup1 --template-file .\storage2.json
 
 $cName1 = 'container1'
 $cName2 = 'container2'
