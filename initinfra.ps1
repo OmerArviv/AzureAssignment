@@ -9,10 +9,10 @@
 az group create -l centralus -n rgroup1
 az config set defaults.location=centralus defaults.group=rgroup1
 
-#creating 2 storage accounts
+# #creating 2 storage accounts
 
-az group deployment create -g rgroup1 --template-file .\storage1.json
-az group deployment create -g rgroup1 --template-file .\storage2.json
+# az group deployment create -g rgroup1 --template-file .\storage1.json
+# az group deployment create -g rgroup1 --template-file .\storage2.json
 
 #creating the vm group
 

@@ -17,7 +17,7 @@ steps:
     echo %PATH%
   displayName: "ECHO"
 - powershell: |
-    .\initVM.ps1
+    .\initInfra.ps1
   displayName: 'Run an init script'
 
 
