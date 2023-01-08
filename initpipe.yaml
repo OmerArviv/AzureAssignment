@@ -21,7 +21,7 @@ steps:
     .\script.ps1
   displayName: 'Run an init script'
 - powershell: |
-  .\container.ps1
-displayName: 'making containers and blobs'
+    .\container.ps1
+  displayName: 'making containers and blobs'
 
 
