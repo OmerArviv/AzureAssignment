@@ -1,5 +1,6 @@
 
 
+
 # deploying resource group
 
 az group create -l centralus -n rgroup1
