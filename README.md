@@ -3,7 +3,7 @@
 Hey,
 welcome to AzureAssignment README :
 
-my first task was to create 1 Resource Group, which I named "rgroup1",
+my first objective was to create 1 Resource Group, which I named "rgroup1",
 with 2 Storage Users, named "omerstorage1/2".
 
 after that I've created a Linux Virtual Machine named "simpleLinuxVM", which uses:

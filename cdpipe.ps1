@@ -1,15 +1,20 @@
 
+$rgroup = 'rgroup1'
+$ostorag1 = 'omerstorage1'
+$ostorage2 = 'omerstorage2'
+$cName1 = 'container1'
+$cName2 = 'container2'
+
 # deploying resource group
 
-az group create -l centralus -n rgroup1
+az group create -l centralus -n $rgroup
 
 # deploying 2 storage accounts
 
-az group deployment create -g rgroup1 --template-file .\storage1.json
-az group deployment create -g rgroup1 --template-file .\storage2.json
+az group deployment create -g $rgroup --template-file .\storage1.json
+az group deployment create -g $rgroup --template-file .\storage2.json
 
-$cName1 = 'container1'
-$cName2 = 'container2'
+
 
 # saving the account keys in variables
 
@@ -24,14 +29,14 @@ $acKey2 = $acInfo2.value[0]
 
 az storage container create `
     --name $cName1 `
-    --account-name omerstorage1 `
+    --account-name $ostorag1 `
     --public-access blob `
     --account-key $acKey1
 
 
 az storage container create `
     --name $cName2 `
-    --account-name omerstorage2 `
+    --account-name $ostorage2 `
     --public-access blob `
     --account-key $acKey2
 
@@ -58,7 +63,7 @@ for ($num = 1 ; $num -le 100 ; $num++) {
         -f $filePath `
         -c $cName1 `
         -n $fileName `
-        --account-name omerstorage1 `
+        --account-name $ostorag1 `
         --account-key $acKey1 `
         --overwrite       # can be removed if we don't want to overwrite existing files
 
@@ -74,7 +79,7 @@ Remove-Item $dirPath
 
 az storage blob copy start-batch `
     --account-key $acKey2 `
-    --account-name omerstorage2 `
+    --account-name $ostorage2 `
     --destination-container $cName2 `
     --source-uri https://omerstorage1.blob.core.windows.net/container1/ `
     --pattern testfile*.txt
